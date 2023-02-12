@@ -10,7 +10,7 @@ reddit = praw.Reddit(
     user_agent="console:raclette-bot:1.0 (by u/Raclette_bot)",
 )
 
-subreddit = reddit.subreddit("france")
+subreddit = reddit.subreddit("raclettetest")
 
 for submission in subreddit.hot(limit=10):
     print("****************")
@@ -22,12 +22,12 @@ for submission in subreddit.hot(limit=10):
             print(comment.body)
 
 
-def run_bot():
-    subreddit = reddit.subreddit("raclettetest")
-    for comment in subreddit.stream.comments(skip_existing=True):
-        if "raclette" in comment.body.lower() or "Raclette" in comment.body:
-            comment.reply("I love raclette too! It's such a delicious dish. 😋")
+# def run_bot():
+#     subreddit = reddit.subreddit("raclettetest")
+#     for comment in subreddit.stream.comments(skip_existing=True):
+#         if "raclette" in comment.body.lower() or "Raclette" in comment.body:
+#             comment.reply("I love raclette too! It's such a delicious dish. 😋")
 
-while True:
-    run_bot()
-    time.sleep(30)
+# while True:
+#     run_bot()
+#     time.sleep(30)
