@@ -1,6 +1,9 @@
 import praw
 import os
 from dotenv import load_dotenv
+import time
+from langdetect import detect
+
 
 load_dotenv()
 
@@ -27,10 +30,16 @@ reddit = praw.Reddit(
 def run_bot():
     subreddit = reddit.subreddit("raclettetest")
     for comment in subreddit.stream.comments(skip_existing=True):
-        if "raclette" in comment.body.lower() or "Raclette" in comment.body:
-            comment.reply("I love raclette too! It's such a delicious dish. 😋")
-            time.sleep(30)
+        lang = detect(comment.body)
+        if comment.author.name != os.getenv("REDDIT_USERNAME"):
+            if "raclette" in comment.body.lower():
+                if lang == 'fr':
+                # French response
+                    comment.reply("J'aime aussi la raclette! C'est un plat tellement délicieux. 😋")
+                else:
+                # English response
+                    comment.reply("I love raclette too! It's such a delicious dish. 😋")
+    time.sleep(30)
 
 while True:
     run_bot()
-    time.sleep(30)
