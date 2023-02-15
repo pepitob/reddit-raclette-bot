@@ -1,11 +1,8 @@
 import praw
 import os
-from dotenv import load_dotenv
 import time
 from langdetect import detect
-
-
-load_dotenv()
+from keep_alive import keep_alive
 
 reddit = praw.Reddit(
     client_id=os.getenv("REDDIT_CLIENT_ID"),
@@ -33,5 +30,6 @@ def run_bot():
                         comment.reply("I love raclette too! It's such a delicious dish. 😋")
         time.sleep(30)
 
+keep_alive()
 while True:
     run_bot()
