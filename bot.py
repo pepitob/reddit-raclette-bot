@@ -43,3 +43,17 @@ def run_bot():
 
 while True:
     run_bot()
+
+
+
+"france"
+"FranceDetendue"
+
+"AskFrance"
+"Cheese"
+"food"
+"FoodPorn"
+"AskCulinary"
+"CulinaryPorn"
+"FoodVideos"
+"EuropeEats"
